@@ -1,0 +1,215 @@
+/* =====================================================================
+   DESIGN TOKENS — PAI Assistant
+   Satu-satunya tempat warna tema didefinisikan. Komponen hanya boleh
+   memakai var(--…) dari file ini, bukan kode warna langsung.
+
+   Tema diatur lewat atribut <html data-theme="light|dark"> oleh skrip
+   kecil di <head> (lihat src/lib/theme.ts).
+   ===================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* ---------- Palet dasar (referensi brand) ---------- */
+  --brand-white: #ffffff;
+  --brand-blue-50: #f4f8ff;
+  --brand-blue-100: #e8f0ff;
+  --brand-blue-200: #dbeafe;
+  --brand-blue-300: #bfdbfe;
+  --brand-blue-400: #60a5fa;
+  --brand-blue-500: #3b82f6;
+  --brand-blue-600: #2563eb;
+  --brand-blue-700: #1d4ed8;
+  --brand-blue-800: #1e40af;
+  --brand-blue-900: #1e3a8a;
+  --brand-slate: #64748b;
+  --brand-navy-950: #071426;
+  --brand-navy-900: #0d1b2e;
+  --brand-navy-800: #172b46;
+  --brand-snow: #f1f5f9;
+
+  /* ---------- Permukaan ---------- */
+  --color-bg: var(--brand-white);
+  --color-bg-soft: var(--brand-blue-50);
+  --color-bg-tint: var(--brand-blue-100);
+  --color-surface: var(--brand-white);
+  --color-surface-raised: var(--brand-white);
+  --color-surface-muted: var(--brand-blue-50);
+  --color-nav-bg: rgba(255, 255, 255, 0.82);
+  --color-overlay: rgba(7, 20, 38, 0.45);
+
+  /* ---------- Brand ---------- */
+  --color-primary: var(--brand-blue-600);
+  --color-primary-hover: var(--brand-blue-700);
+  --color-primary-active: var(--brand-blue-800);
+  /* Warna isian tombol yang berisi teks putih (kontras ≥ 4.5:1). */
+  --color-primary-solid: var(--brand-blue-600);
+  --color-primary-solid-hover: var(--brand-blue-700);
+  --color-on-primary: var(--brand-white);
+  --color-primary-soft: var(--brand-blue-200);
+  --color-primary-softer: var(--brand-blue-100);
+  --color-secondary: var(--brand-blue-200);
+  --color-on-secondary: var(--brand-blue-900);
+  --color-accent-strong: var(--brand-blue-900);
+  --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #2563eb 45%, #1e40af 100%);
+  --gradient-text: linear-gradient(120deg, #2563eb 0%, #1e40af 60%, #3b82f6 100%);
+
+  /* ---------- Teks ---------- */
+  --color-heading: #0b1a3a;
+  --color-text: #13213d;
+  --color-text-soft: #33435e;
+  /* Sedikit lebih gelap dari #64748B agar lolos WCAG AA di latar biru muda. */
+  --color-text-muted: #56657c;
+
+  /* ---------- Garis ---------- */
+  --color-border: #dce4f0;
+  --color-border-strong: #c3d1e6;
+  --color-focus: var(--brand-blue-600);
+  --color-focus-ring: rgba(37, 99, 235, 0.35);
+
+  /* ---------- Status (dipakai hemat) ---------- */
+  --color-danger: #c62828;
+  --color-danger-soft: #fdecec;
+  --color-warning: #a35b00;
+  --color-warning-soft: #fff4dc;
+  --color-success: #0b8a5f;
+  --color-success-soft: #e3f7ef;
+  --color-info: var(--brand-blue-700);
+  --color-info-soft: var(--brand-blue-100);
+
+  /* ---------- Bayangan (bernuansa biru) ---------- */
+  --shadow-xs: 0 1px 2px rgba(15, 30, 61, 0.06);
+  --shadow-sm: 0 1px 2px rgba(15, 30, 61, 0.04), 0 4px 12px -4px rgba(30, 58, 138, 0.1);
+  --shadow-md: 0 2px 6px rgba(15, 30, 61, 0.05), 0 14px 32px -14px rgba(30, 58, 138, 0.22);
+  --shadow-lg: 0 30px 70px -30px rgba(30, 58, 138, 0.35);
+  --shadow-primary: 0 10px 24px -10px rgba(37, 99, 235, 0.6);
+
+  /* ---------- Panggung karakter (hero) ---------- */
+  --stage-glow-1: #dbeafe;
+  --stage-glow-2: #c3dafe;
+  --stage-glow-3: rgba(219, 234, 254, 0);
+  --stage-ring: rgba(37, 99, 235, 0.14);
+  --stage-pattern: rgba(37, 99, 235, 0.07);
+  --stage-spark: #93c5fd;
+
+  /* ---------- Balon percakapan ---------- */
+  --bubble-bg: #ffffff;
+  --bubble-text: #13213d;
+  --bubble-border: #d3e0f4;
+  --bubble-shadow: 0 16px 32px -18px rgba(30, 58, 138, 0.45), 0 2px 6px rgba(15, 30, 61, 0.06);
+
+  /* ---------- Chat ---------- */
+  --chat-user-bg: var(--color-primary-solid);
+  --chat-user-text: var(--brand-white);
+  --chat-ai-bg: var(--color-surface);
+  --chat-ai-border: var(--color-border);
+  --input-bg: var(--brand-white);
+  --input-border: var(--color-border-strong);
+  --input-placeholder: #7a889e;
+  --code-bg: #eef3fb;
+
+  /* ---------- Lingkungan ilustrasi karakter ---------- */
+  --char-rim: rgba(255, 255, 255, 0);
+  --char-contact-shadow: rgba(30, 58, 138, 0.16);
+
+  /* ---------- Tipografi ---------- */
+  --font-sans:
+    "Plus Jakarta Sans Variable", "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+
+  /* ---------- Bentuk & tata letak ---------- */
+  --radius-xs: 8px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 999px;
+  --container: 1200px;
+  --gutter: clamp(16px, 4vw, 32px);
+  --nav-height: 68px;
+
+  /* ---------- Gerak ---------- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 160ms;
+  --dur-base: 260ms;
+  --dur-theme: 320ms;
+}
+
+/* =====================================================================
+   DARK MODE — biru navy & hitam kebiruan
+   ===================================================================== */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-bg: var(--brand-navy-950);
+  --color-bg-soft: #0a1a30;
+  --color-bg-tint: var(--brand-navy-900);
+  --color-surface: var(--brand-navy-900);
+  --color-surface-raised: #11233b;
+  --color-surface-muted: #0a1a30;
+  --color-nav-bg: rgba(7, 20, 38, 0.8);
+  --color-overlay: rgba(2, 8, 18, 0.65);
+
+  --color-primary: var(--brand-blue-500);
+  --color-primary-hover: var(--brand-blue-400);
+  --color-primary-active: var(--brand-blue-600);
+  --color-primary-solid: var(--brand-blue-600);
+  --color-primary-solid-hover: var(--brand-blue-700);
+  --color-on-primary: var(--brand-white);
+  --color-primary-soft: var(--brand-navy-800);
+  --color-primary-softer: #0f2038;
+  --color-secondary: var(--brand-navy-800);
+  --color-on-secondary: var(--brand-blue-200);
+  --color-accent-strong: var(--brand-blue-300);
+  --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%);
+  --gradient-text: linear-gradient(120deg, #93c5fd 0%, #3b82f6 55%, #60a5fa 100%);
+
+  --color-heading: #ffffff;
+  --color-text: var(--brand-snow);
+  --color-text-soft: #cbd5e1;
+  --color-text-muted: #94a3b8;
+
+  --color-border: var(--brand-navy-800);
+  --color-border-strong: #23395a;
+  --color-focus: var(--brand-blue-400);
+  --color-focus-ring: rgba(96, 165, 250, 0.4);
+
+  --color-danger: #f87171;
+  --color-danger-soft: rgba(248, 113, 113, 0.12);
+  --color-warning: #fbbf24;
+  --color-warning-soft: rgba(251, 191, 36, 0.12);
+  --color-success: #34d399;
+  --color-success-soft: rgba(52, 211, 153, 0.12);
+  --color-info: var(--brand-blue-300);
+  --color-info-soft: rgba(59, 130, 246, 0.14);
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35), 0 6px 16px -8px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.35), 0 18px 40px -18px rgba(0, 0, 0, 0.7);
+  --shadow-lg: 0 34px 80px -30px rgba(0, 0, 0, 0.8);
+  --shadow-primary: 0 12px 28px -10px rgba(59, 130, 246, 0.55);
+
+  --stage-glow-1: #10294d;
+  --stage-glow-2: #16386a;
+  --stage-glow-3: rgba(16, 41, 77, 0);
+  --stage-ring: rgba(96, 165, 250, 0.16);
+  --stage-pattern: rgba(147, 197, 253, 0.06);
+  --stage-spark: #3b82f6;
+
+  --bubble-bg: #10223a;
+  --bubble-text: var(--brand-snow);
+  --bubble-border: #26406a;
+  --bubble-shadow: 0 18px 36px -18px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(96, 165, 250, 0.06);
+
+  --chat-ai-bg: var(--color-surface);
+  --chat-ai-border: var(--color-border);
+  --input-bg: #0b1a2f;
+  --input-border: #23395a;
+  --input-placeholder: #7d8ca3;
+  --code-bg: #0a1628;
+
+  --char-rim: rgba(125, 175, 255, 0.4);
+  --char-contact-shadow: rgba(0, 0, 0, 0.45);
+}

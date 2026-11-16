@@ -1,0 +1,293 @@
+.stage {
+  position: relative;
+  margin: 0;
+  width: 100%;
+  max-width: 620px;
+  margin-inline: auto;
+  isolation: isolate;
+}
+
+/* ---------- Latar panggung ---------- */
+.backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.glow,
+.ring,
+.pattern {
+  position: absolute;
+  left: 50%;
+  top: 56%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.glow {
+  width: 92%;
+  background: radial-gradient(
+    circle at 50% 42%,
+    var(--stage-glow-2) 0%,
+    var(--stage-glow-1) 46%,
+    var(--stage-glow-3) 72%
+  );
+}
+
+.ring {
+  width: 78%;
+  border: 1.5px dashed var(--stage-ring);
+  animation: ring-spin 80s linear infinite;
+}
+
+.pattern {
+  width: 100%;
+  background-color: var(--stage-pattern);
+  -webkit-mask-image: url("/brand/pattern.svg"), radial-gradient(circle, #000 28%, transparent 68%);
+  -webkit-mask-size:
+    72px 72px,
+    100% 100%;
+  -webkit-mask-repeat: repeat, no-repeat;
+  -webkit-mask-position: center, center;
+  -webkit-mask-composite: source-in;
+  mask-image: url("/brand/pattern.svg"), radial-gradient(circle, #000 28%, transparent 68%);
+  mask-size:
+    72px 72px,
+    100% 100%;
+  mask-repeat: repeat, no-repeat;
+  mask-position: center, center;
+  mask-composite: intersect;
+}
+
+.spark {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  background: var(--stage-spark);
+  transform: rotate(45deg);
+  opacity: 0.7;
+  animation: spark-float 6s ease-in-out infinite;
+}
+
+.sparkA {
+  left: 6%;
+  top: 30%;
+}
+
+.sparkB {
+  right: 4%;
+  top: 44%;
+  width: 7px;
+  height: 7px;
+  animation-delay: 1.4s;
+}
+
+.sparkC {
+  left: 46%;
+  top: 6%;
+  width: 6px;
+  height: 6px;
+  animation-delay: 2.6s;
+}
+
+@keyframes ring-spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes spark-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(45deg);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translateY(-10px) rotate(45deg);
+    opacity: 0.85;
+  }
+}
+
+/* ---------- Grid: baris 1 balon, baris 2 karakter ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  align-items: end;
+}
+
+.character {
+  grid-row: 2;
+  position: relative;
+  cursor: pointer;
+  animation: char-in 900ms var(--ease-out) both;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.male {
+  grid-column: 1;
+  z-index: 2;
+  transform: translateX(5%);
+  animation-delay: 120ms;
+}
+
+.female {
+  grid-column: 2;
+  z-index: 1;
+  transform: translateX(-7%);
+  animation-delay: 300ms;
+}
+
+.float {
+  animation: float 6.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+.female .float {
+  animation-duration: 7.2s;
+  animation-delay: -2.4s;
+}
+
+@keyframes char-in {
+  from {
+    opacity: 0;
+    translate: 0 28px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+/* ---------- Balon percakapan ---------- */
+.bubble {
+  grid-row: 1;
+  position: relative;
+  z-index: 3;
+  justify-self: center;
+  max-width: min(250px, 92%);
+  margin: 0 0 14px;
+  padding: 0.75rem 1rem;
+  border-radius: 18px;
+  background: var(--bubble-bg);
+  color: var(--bubble-text);
+  border: 1px solid var(--bubble-border);
+  box-shadow: var(--bubble-shadow);
+  font-size: 0.95rem;
+  font-weight: 650;
+  line-height: 1.4;
+  letter-spacing: -0.005em;
+  text-align: center;
+  text-wrap: balance;
+  opacity: 0;
+  transform-origin: 50% 120%;
+}
+
+/* Ekor balon menunjuk ke kepala karakter. */
+.bubble::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -7px;
+  width: 14px;
+  height: 14px;
+  background: var(--bubble-bg);
+  border-right: 1px solid var(--bubble-border);
+  border-bottom: 1px solid var(--bubble-border);
+  border-bottom-right-radius: 4px;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+/* Jarak balon → kepala dihitung relatif terhadap lebar kolom
+   (tinggi SVG sebanding dengan lebarnya), jadi tetap pas di semua ukuran. */
+.bubble[data-side="male"] {
+  grid-column: 1;
+  translate: 9% 0;
+  margin-bottom: calc(14px - 6.5%);
+}
+
+.bubble[data-side="female"] {
+  grid-column: 2;
+  translate: -12% 0;
+  margin-bottom: calc(14px - 10%);
+}
+
+.bubble[data-ready="true"] {
+  animation: bubble-in 560ms var(--ease-out) both;
+}
+
+.bubble[data-side="male"][data-ready="true"] {
+  animation-delay: 700ms;
+}
+
+.bubble[data-side="female"][data-ready="true"] {
+  animation-delay: 1150ms;
+}
+
+@keyframes bubble-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.82) translateY(8px);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.03) translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ---------- Responsif ---------- */
+@media (max-width: 720px) {
+  .float,
+  .ring,
+  .spark {
+    animation: none;
+  }
+
+  /* Kolom sempit: balon tidak digeser ke tengah agar tidak saling menimpa. */
+  .bubble,
+  .bubble[data-side="male"],
+  .bubble[data-side="female"] {
+    max-width: calc(100% - 8px);
+    translate: 0 0;
+    padding: 0.55rem 0.7rem;
+    border-radius: 15px;
+    font-size: 0.82rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .bubble {
+    font-size: 0.78rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .character,
+  .bubble[data-ready="true"] {
+    animation: none;
+    opacity: 1;
+  }
+
+  .float,
+  .ring,
+  .spark {
+    animation: none;
+  }
+}

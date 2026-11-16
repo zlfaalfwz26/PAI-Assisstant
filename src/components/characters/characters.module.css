@@ -1,0 +1,289 @@
+/* =====================================================================
+   Animasi & ekspresi karakter maskot.
+   Semua gerakan ringan, berbasis transform/opacity, dan dimatikan saat
+   prefers-reduced-motion. Di perangkat sentuh/mobile gerakan dikurangi.
+   ===================================================================== */
+
+.root {
+  position: relative;
+  display: block;
+  width: 100%;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.root[data-fade="true"] {
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 74%, transparent 99%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 74%, transparent 99%);
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* ---------- Lapisan ekspresi ---------- */
+.expr {
+  opacity: 0;
+  transition: opacity 240ms ease;
+}
+
+.root[data-expression="neutral"] [data-expr~="neutral"],
+.root[data-expression="happy"] [data-expr~="happy"],
+.root[data-expression="thinking"] [data-expr~="thinking"],
+.root[data-expression="confused"] [data-expr~="confused"],
+.root[data-expression="supportive"] [data-expr~="supportive"],
+.root[data-expression="apologetic"] [data-expr~="apologetic"] {
+  opacity: 1;
+}
+
+.browLift,
+.eyeShift,
+.look {
+  transition: transform 320ms var(--ease-out);
+}
+
+.root[data-expression="happy"] .browLift {
+  transform: translateY(-2.5px);
+}
+
+.root[data-expression="supportive"] .browLift {
+  transform: translateY(-1.5px);
+}
+
+.root[data-expression="thinking"] .eyeShift {
+  transform: translate(3px, -3.5px);
+}
+
+.root[data-expression="confused"] .eyeShift {
+  transform: translate(-1px, 0.5px);
+}
+
+.root[data-expression="apologetic"] .eyeShift {
+  transform: translate(0, 2px);
+}
+
+/* Pelacakan arah pandang (diatur lewat --look-x / --look-y oleh JS). */
+.look {
+  transform: translate(calc(var(--look-x, 0) * 2.4px), calc(var(--look-y, 0) * 1.8px));
+  transition: transform 220ms ease-out;
+}
+
+.blush {
+  opacity: 0.75;
+  transition: opacity 300ms ease;
+}
+
+.root[data-expression="happy"] .blush,
+.root[data-expression="supportive"] .blush {
+  opacity: 1;
+}
+
+.root[data-expression="apologetic"] .blush {
+  opacity: 0.9;
+}
+
+/* ---------- Kedipan ---------- */
+.blink {
+  transform-box: fill-box;
+  transform-origin: 50% 55%;
+}
+
+.root[data-blink="true"] .blink {
+  animation: blink var(--blink-duration, 5.8s) infinite;
+  animation-delay: var(--blink-delay, 1.4s);
+}
+
+@keyframes blink {
+  0%,
+  92%,
+  100% {
+    transform: scaleY(1);
+  }
+  94% {
+    transform: scaleY(0.1);
+  }
+  96% {
+    transform: scaleY(1);
+  }
+}
+
+/* ---------- Lambaian tangan ---------- */
+.wave,
+.waveHand {
+  transform-box: view-box;
+}
+
+.root[data-waving="true"] .wave {
+  animation: wave var(--wave-cycle, 7s) var(--ease-in-out) var(--wave-delay, 0.9s) infinite;
+}
+
+.root[data-waving="true"] .waveHand {
+  animation: wave-hand var(--wave-cycle, 7s) var(--ease-in-out) var(--wave-delay, 0.9s) infinite;
+}
+
+/* Satu kali lambaian dipicu oleh interaksi (hover/tap). */
+.root[data-wave-once="true"] .wave {
+  animation: wave 2.4s var(--ease-in-out) 0s 1;
+}
+
+.root[data-wave-once="true"] .waveHand {
+  animation: wave-hand 2.4s var(--ease-in-out) 0s 1;
+}
+
+@keyframes wave {
+  0% {
+    transform: rotate(0deg);
+  }
+  7% {
+    transform: rotate(calc(var(--wave-dir, 1) * -15deg * var(--wave-amp, 1)));
+  }
+  14% {
+    transform: rotate(calc(var(--wave-dir, 1) * 6deg * var(--wave-amp, 1)));
+  }
+  21% {
+    transform: rotate(calc(var(--wave-dir, 1) * -13deg * var(--wave-amp, 1)));
+  }
+  28% {
+    transform: rotate(calc(var(--wave-dir, 1) * 4deg * var(--wave-amp, 1)));
+  }
+  34% {
+    transform: rotate(calc(var(--wave-dir, 1) * -4deg * var(--wave-amp, 1)));
+  }
+  40%,
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes wave-hand {
+  0%,
+  40%,
+  100% {
+    transform: rotate(0deg);
+  }
+  7% {
+    transform: rotate(calc(var(--wave-dir, 1) * -7deg * var(--wave-amp, 1)));
+  }
+  14% {
+    transform: rotate(calc(var(--wave-dir, 1) * 8deg * var(--wave-amp, 1)));
+  }
+  21% {
+    transform: rotate(calc(var(--wave-dir, 1) * -6deg * var(--wave-amp, 1)));
+  }
+  28% {
+    transform: rotate(calc(var(--wave-dir, 1) * 5deg * var(--wave-amp, 1)));
+  }
+}
+
+/* ---------- Aksen ekspresi ---------- */
+.thought circle {
+  fill: var(--bubble-bg, #ffffff);
+  stroke: var(--color-primary, #2563eb);
+  stroke-opacity: 0.45;
+  stroke-width: 1.6;
+}
+
+.root[data-expression="thinking"] .thought circle {
+  animation: thought 1.5s ease-in-out infinite;
+}
+
+.root[data-expression="thinking"] .thought circle:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.root[data-expression="thinking"] .thought circle:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes thought {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.question {
+  fill: var(--color-primary, #2563eb);
+  font-family: var(--font-sans);
+  font-size: 34px;
+  font-weight: 800;
+}
+
+.heart,
+.spark {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.root[data-expression="supportive"] .heart {
+  animation: pop 1.6s var(--ease-out) infinite;
+}
+
+.root[data-expression="happy"] .spark {
+  animation: twinkle 2.2s ease-in-out infinite;
+}
+
+@keyframes pop {
+  0%,
+  100% {
+    transform: scale(0.9);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    transform: scale(0.7) rotate(0deg);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.05) rotate(20deg);
+    opacity: 1;
+  }
+}
+
+/* ---------- Kurangi gerak di perangkat sentuh / layar kecil ---------- */
+@media (hover: none), (max-width: 720px) {
+  .root[data-waving="true"] .wave,
+  .root[data-waving="true"] .waveHand {
+    animation-iteration-count: 1;
+  }
+
+  .look {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root .wave,
+  .root .waveHand,
+  .root .blink,
+  .root .thought circle,
+  .root .heart,
+  .root .spark {
+    animation: none !important;
+  }
+
+  .look,
+  .eyeShift,
+  .browLift {
+    transition: none;
+  }
+}

@@ -1,0 +1,33 @@
+.toggle {
+  position: relative;
+  overflow: hidden;
+}
+
+.sun,
+.moon {
+  grid-area: 1 / 1;
+  transition:
+    transform 420ms var(--ease-out),
+    opacity 260ms ease;
+}
+
+/* Mode terang: tampilkan bulan (aksi berikutnya = gelap). */
+.sun {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.6);
+}
+
+.moon {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+
+:global(:root[data-theme="dark"]) .sun {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+
+:global(:root[data-theme="dark"]) .moon {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.6);
+}

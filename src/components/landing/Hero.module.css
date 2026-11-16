@@ -1,0 +1,134 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(28px, 5vw, 56px) clamp(48px, 7vw, 88px);
+  background: linear-gradient(180deg, var(--color-bg-soft) 0%, var(--color-bg) 100%);
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.blobA,
+.blobB {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.55;
+}
+
+.blobA {
+  width: 420px;
+  height: 420px;
+  left: -140px;
+  top: -160px;
+  background: var(--color-primary-soft);
+}
+
+.blobB {
+  width: 380px;
+  height: 380px;
+  right: -160px;
+  top: 18%;
+  background: var(--color-primary-soft);
+  opacity: 0.35;
+}
+
+.inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: clamp(24px, 4vw, 56px);
+}
+
+.copy {
+  display: grid;
+  justify-items: start;
+  gap: 1.25rem;
+  animation: copy-in 800ms var(--ease-out) both;
+}
+
+.title {
+  font-size: clamp(2.5rem, 5.6vw, 4.25rem);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.accent {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.lead {
+  max-width: 34ch;
+  color: var(--color-text-soft);
+  font-size: clamp(1.05rem, 1.7vw, 1.2rem);
+  line-height: 1.65;
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.visual {
+  position: relative;
+}
+
+@keyframes copy-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 960px) {
+  .inner {
+    grid-template-columns: 1fr;
+  }
+
+  /* Di layar kecil karakter tampil lebih dulu agar sambutan langsung terlihat. */
+  .visual {
+    order: -1;
+    max-width: 520px;
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  .copy {
+    justify-items: center;
+    text-align: center;
+  }
+
+  .lead {
+    max-width: 40ch;
+  }
+
+  .ctas {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .ctas {
+    display: grid;
+    width: 100%;
+  }
+
+  .ctas :global(.btn) {
+    width: 100%;
+  }
+}

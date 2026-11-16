@@ -1,0 +1,76 @@
+.header {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(40px, 6vw, 72px);
+  background: linear-gradient(180deg, var(--color-bg-soft), var(--color-bg));
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--stage-pattern);
+  -webkit-mask-image: url("/brand/pattern.svg"), linear-gradient(90deg, transparent 30%, #000 100%);
+  -webkit-mask-size:
+    72px 72px,
+    100% 100%;
+  -webkit-mask-repeat: repeat, no-repeat;
+  -webkit-mask-composite: source-in;
+  mask-image: url("/brand/pattern.svg"), linear-gradient(90deg, transparent 30%, #000 100%);
+  mask-size:
+    72px 72px,
+    100% 100%;
+  mask-repeat: repeat, no-repeat;
+  mask-composite: intersect;
+  pointer-events: none;
+}
+
+.inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.copy {
+  max-width: 680px;
+}
+
+.title {
+  font-size: clamp(2rem, 4.4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.lead {
+  margin-top: 0.9rem;
+  color: var(--color-text-muted);
+  font-size: clamp(1rem, 1.6vw, 1.12rem);
+}
+
+.mascots {
+  display: flex;
+  flex: none;
+}
+
+.avatar {
+  width: clamp(84px, 10vw, 112px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 35%, var(--stage-glow-2), var(--stage-glow-1));
+  border: 4px solid var(--color-surface);
+  box-shadow: var(--shadow-md);
+}
+
+.avatar + .avatar {
+  margin-left: -16px;
+}
+
+@media (max-width: 640px) {
+  .mascots {
+    display: none;
+  }
+}

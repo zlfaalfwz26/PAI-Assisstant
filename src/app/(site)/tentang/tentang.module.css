@@ -1,0 +1,85 @@
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: clamp(24px, 4vw, 48px);
+  align-items: start;
+}
+
+.heading {
+  margin-bottom: 1.25rem;
+  font-size: 1.5rem;
+}
+
+.prose {
+  display: grid;
+  gap: 1rem;
+  color: var(--color-text-soft);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.aside {
+  display: grid;
+  gap: 16px;
+  position: sticky;
+  top: calc(var(--nav-height) + 20px);
+}
+
+.sideCard {
+  display: grid;
+  gap: 0.75rem;
+  padding: 22px;
+}
+
+.sideTitle {
+  font-size: 1rem;
+}
+
+.muted {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+.contactList {
+  display: grid;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contactList a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--color-text-soft);
+  font-weight: 600;
+  text-decoration: none;
+  word-break: break-word;
+}
+
+.contactList a:hover {
+  color: var(--color-primary);
+}
+
+.sideLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.sideLink:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 880px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .aside {
+    position: static;
+  }
+}
