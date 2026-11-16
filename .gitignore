@@ -1,0 +1,21 @@
+# dependencies
+node_modules/
+
+# next.js build output
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+
+# env — JANGAN commit file berisi API key
+.env
+.env.local
+.env.*.local
+.env.production
+.env.development
+
+# misc
+.DS_Store
+npm-debug.log*
+coverage/
+test-results/

@@ -1,0 +1,39 @@
+{
+  "name": "pai-assistant",
+  "version": "0.1.0",
+  "private": true,
+  "description": "PAI Assistant — ruang informasi dan teman berdiskusi untuk mengenal dunia Pendidikan Agama Islam.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "format": "prettier --write .",
+    "mock:openrouter": "node scripts/mock-openrouter.mjs",
+    "check:secrets": "node scripts/check-client-secrets.mjs"
+  },
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "dependencies": {
+    "@fontsource-variable/plus-jakarta-sans": "^5.3.0",
+    "@openrouter/sdk": "^1.5.56",
+    "@supabase/supabase-js": "^2.119.0",
+    "lucide-react": "^1.69.0",
+    "next": "^16.4.5",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1",
+    "server-only": "^0.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "prettier": "^3.9.10",
+    "typescript": "^5.9.3",
+    "vitest": "^5.1.0"
+  }
+}
