@@ -65,7 +65,7 @@ export const siteConfig = {
 
   /* ---------------- Identitas lembaga ----------------
    * Isi dengan nama resmi. Biarkan "" bila belum pasti. */
-  INSTITUTION_NAME: "",
+  INSTITUTION_NAME: "UIN SIBER SYEKH NURJATI CIREBON",
   DEPARTMENT_NAME: "Jurusan Pendidikan Agama Islam",
   DEPARTMENT_SHORT_NAME: "Jurusan PAI",
   HMJ_NAME: "HMJ PAI",
@@ -77,23 +77,101 @@ export const siteConfig = {
    *   PAI_VISION: "Menjadi …",
    *   PAI_MISSION: ["Menyelenggarakan …", "Mengembangkan …"],
    */
-  PAI_VISION: "MENJADIKAN",
-  PAI_MISSION: ["MENYELENGGARAKAN", "MENGEMBANGKAN"] as string[],
+  PAI_VISION: "“Mengembangkan Keilmuan PAI Siber yang Unggul dan Transformatif Berkelas Dunia Berdasarkan Nilai-Nilai Islam Kaffah.”",
+  PAI_MISSION: ["Menyelenggarakan pendidikan dan pengajaran berbasis IT untuk menghasilkan Guru PAI yang profesional, unggul kompetitif, dan berwawasan Moderasi Beragama.", "Menyelenggarakan penelitian bidang Pendidikan Agama Islam berwawasan moderat dengan pendekatan multidisipliner berbasis digital.","Mempublikasikan karya ilmiah bidang Pendidikan Agama Islam dengan memanfaatkan kemajuan teknologi.","Menyelenggarakan pengabdian kepada masyarakat dalam bidang PAI berbasis digital."] as string[],
 
   /* ---------------- Tentang HMJ PAI ----------------
    * Satu string per paragraf. Contoh: ["HMJ PAI adalah …", "Kami …"] */
-  HMJ_ABOUT: ["HMJ PAI adalah organisasi mahasiswa yang berfokus pada pengembangan potensi dan keterampilan anggotanya dalam bidang Pendidikan Agama Islam."] as string[],
+  HMJ_ABOUT: ["Himpunan Mahasiswa Jurusan Pendidikan Agama Islam (HMJ PAI) merupakan organisasi kemahasiswaan di tingkat jurusan yang menjadi wadah bagi mahasiswa PAI untuk mengembangkan potensi, kapasitas intelektual, keterampilan organisasi, kepemimpinan, dan kemampuan sosial.",
+              "HMJ PAI tidak hanya berperan sebagai organisasi pelaksana kegiatan mahasiswa, tetapi juga menjadi ruang aktualisasi, kolaborasi, aspirasi, dan pengembangan diri mahasiswa dalam lingkungan akademik maupun masyarakat.",
+              "HMJ PAI berkomitmen untuk menciptakan lingkungan yang inklusif, mendukung, dan memberdayakan mahasiswa PAI agar dapat tumbuh menjadi individu yang kompeten, berintegritas, dan siap menghadapi tantangan di dunia pendidikan dan masyarakat."
+              
+            ] as string[],
 
   /* ---------------- Tim ----------------
    * Contoh:
    *   { name: "Nama Lengkap", role: "Ketua Umum", division: "Inti",
    *     photo: "/team/nama.jpg", instagram: "https://instagram.com/…" }
    */
-  TEAM_MEMBERS: [{ name: "Nama Lengkap", role: "Ketua Umum", division: "Inti", instagram: "https://instagram.com/…" }] as TeamMember[],
-
+TEAM_MEMBERS: [
+  {
+    name: "Zalfa Alfawaz",
+    role: "Developer/Lead Full-Stack Developer",
+    division: "Ketua Departemen Pendikbud",
+    photo: "/team/ketua-departemen-zalfa.jpg",
+    instagram: "https://instagram.com/Fazzlfaa_",
+  },
+  {
+    name: "Cahya Qolbi F",
+    role: "Technical Advisor",
+    division: "Sekretaris Departemen Pendikbud",
+    photo: "/team/sekretaris-departemen-cahya.jpg",
+    instagram: "https://instagram.com/efjee_",
+  },
+    {
+    name: "Salman Alfarisi",
+    role: "Technical Advisor",
+    division: "SC Departemen Pendikbud",
+    photo: "/team/sc-departemen-salman.jpg",
+    instagram: "https://instagram.com/efjee_",
+  },
+  {
+    name: "Prince Adzhar Salisipan Duran",
+    role: "QA / Quality Assurance Engineer",
+    division: "Anggota Departemen Pendikbud",
+  
+    photo: "/team/anggota-prince.jpg",
+    instagram: "https://instagram.com/adzhaari",
+  },
+  {
+    name: "Nihayatus (Aya)",
+    role: "QA / Quality Assurance Engineer",
+    division: "Anggota Departemen Pendikbud",
+    photo: "/team/anggota-nihayatus.jpg",
+    instagram: "https://instagram.com/_nihayatus.sdh",
+  },
+  {
+    name: "Khalida N",
+    role: "Entry-Level Developer",
+    division: "Anggota Departemen Pendikbud",
+    photo: "/team/anggota-khalida.jpg",
+    instagram: "https://instagram.com/khalidanfzh",
+  },
+  {
+    name: "Zahfira N",
+    role: "Entry-Level Developer",
+    division: "Anggota Departemen Pendikbud",
+    photo: "/team/anggota-zahfira.jpg",
+    instagram: "https://instagram.com/zhfraheree_",
+  },
+  {
+    name: "Sandi Maulana Y",
+    role: "Entry-Level Developer",
+    division: "Anggota Departemen Pendikbud",
+    photo: "/team/anggota-sandi.jpg",
+    instagram: "https://instagram.com/sndimaulanaysf_",
+  },
+] as TeamMember[],
   /* ---------------- Kontak & media sosial ---------------- */ 
-  CONTACT_EMAIL: "NAMA@GMAIL.COM",
-  SOCIAL_LINKS: [] as SocialLink[],
+  CONTACT_EMAIL: "",
+
+SOCIAL_LINKS: [
+  {
+    platform: "Instagram",
+    label: "@hmjpaiuinsscirebon",
+    url: "https://www.instagram.com/hmjpaiuinsscirebon/",
+  },
+  {
+    platform: "Instagram",
+    label: "@pendikbud_hmjpai",
+    url: "https://www.instagram.com/pendikbud_hmjpai/",
+  },
+  {
+    platform: "Instagram",
+    label: "@brainstormid_",
+    url: "https://www.instagram.com/brainstormid_/",
+  },
+] as unknown as SocialLink[],
 
   /* ---------------- Sapaan karakter penyambut ----------------
    * Dipilih acak di browser setiap halaman dimuat. Tidak memakai LLM. */
@@ -112,12 +190,14 @@ export const siteConfig = {
     "Masih bingung? Yuk, tanya!",
     "Mau tanya-tanya seputar jurusan kami?",
     "Tenang, kami siap membantu!",
-    "Punya pertanyaan tentang kehidupan mahasiswa PAI?",
-    "Ada yang ingin kamu ketahui hari ini?",
-    "Jangan ragu bertanya, ya!",
-    "Yuk, ngobrol santai seputar PAI!",
-    "Butuh teman diskusi materi keislaman?",
     "Ceritakan apa yang ingin kamu pelajari!",
+    "Udah dengar tentang Fawaz? yuk cari tahu disini!",
+    "Pernah dengar cerita tentang Fawaz? Katanya banyak hal menarik yang bisa dibahas!",
+    "Hai! Fawaz punya satu pertanyaan menarik untukmu. Siap berdiskusi?",
+    "Cahya punya cerita seru yang mungkin belum pernah kamu dengar!",
+    "Kalau bertemu Kak Salman, kira-kira apa yang ingin kamu tanyakan?",
+    "Fawaz, Cahya, dan Salman punya sudut pandang yang berbeda. Menarik, bukan?",
+    "Ada Fawaz yang penuh ide, Cahya dengan ceritanya, dan Salman dengan sudut pandangnya!",
   ] as string[],
 
   /* ---------------- Karakter maskot ---------------- */
