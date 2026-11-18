@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import "@fontsource-variable/plus-jakarta-sans";
 import "@/styles/globals.css";
 import { siteConfig } from "@/config/site";
@@ -46,6 +47,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Navbar />
           {children}
         </div>
+        <Analytics />
       </body>
     </html>
   );
